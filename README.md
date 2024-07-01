@@ -1,4 +1,4 @@
-# promptu
+# suggest good name (promptu)
 AI powered tool to analyze data with your own language 
 
 # Join WhatsApp group
