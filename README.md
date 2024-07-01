@@ -1,8 +1,8 @@
 # suggest good name (promptu)
 AI powered tool to analyze data with your own language 
 
-# Join WhatsApp group
-https://chat.whatsapp.com/G5vGFI6Gd2v4NvUYmzT9oF
+# Join Discord server
+https://discord.gg/RTvzPTRwB3
 
 # Rough project architecture 
 https://excalidraw.com/#json=T1gg6d_Cwnjm_i2dZq9VO,OCTBs9Js2k-KgTKpks05ew
