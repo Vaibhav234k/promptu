@@ -10,9 +10,6 @@ https://excalidraw.com/#json=T1gg6d_Cwnjm_i2dZq9VO,OCTBs9Js2k-KgTKpks05ew
 # Get idea of how this matplotlib works (suggest other libraries if its good)
 https://colab.research.google.com/drive/1yN9Cz-rqvOXGkdNR9ekffrx-lVVfVuqW?usp=sharing
 
-# create-next-app prompts
-![image](https://github.com/Vaibhav234k/promptu/assets/114278562/3d4e0b61-d295-4405-9aea-fb71baf28a19)
-
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
 ## Getting Started
