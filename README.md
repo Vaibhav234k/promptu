@@ -1,3 +1,15 @@
+# suggest good name (promptu)
+AI powered tool to analyze data with your own language 
+
+# Join Discord server
+https://discord.gg/RTvzPTRwB3
+
+# Rough project architecture 
+https://excalidraw.com/#json=T1gg6d_Cwnjm_i2dZq9VO,OCTBs9Js2k-KgTKpks05ew
+
+# Get idea of how this matplotlib works (suggest other libraries if its good)
+https://colab.research.google.com/drive/1yN9Cz-rqvOXGkdNR9ekffrx-lVVfVuqW?usp=sharing
+
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
 ## Getting Started
