@@ -20,7 +20,7 @@ export default function TryForFreeButton() {
   return (
     <div className="flex gap-7 justify-center items-center">
       <Button className="bg-secondary text-primary border-0 hover:bg-slate-200" onClick={() => HandleContactUs()}>Contact Us</Button>
-      <Button onClick={() => TryForFreeHandle()}>Try Product</Button>
+      <Button onClick={() => TryForFreeHandle()}>Try for free</Button>
     </div>
   );
 }
