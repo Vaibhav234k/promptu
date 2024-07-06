@@ -13,13 +13,17 @@ import { SetStateAction, useState } from "react";
 import { ExcelRenderer, OutTable } from "react-excel-renderer";
 import { SiMicrosoftexcel } from "react-icons/si";
 import { Card } from "reactstrap";
-import Loading from "./loading"
+import Loading from "./loading";
+import run from "@/app/models/generative-ai";
 
 export default function WholeProductPage() {
   let file: any;
+  const [Json, setJson] = useState("");
   const [cols, setCols] = useState([]);
   const [rows, setRows] = useState([]);
   const [isloading, setIsloading] = useState(false);
+  const [Prompt, setPrompt] = useState("");
+  const [Res, setRes] = useState<string>();
 
   async function fileHandler() {
     let fileObj = file[0]; //just pass the fileObj as parameter
@@ -35,12 +39,18 @@ export default function WholeProductPage() {
         } else {
           setCols(resp.cols);
           setRows(resp.rows);
-          console.log(cols, rows);
+          setJson(JSON.stringify(resp.rows));
         }
       }
     );
     setIsloading(false);
   }
+
+  async function callModel() {
+    console.log("Json",Json);
+    setRes(await run(Prompt,Json));
+  }
+
   return isloading ? (
     <Loading />
   ) : (
@@ -57,41 +67,56 @@ export default function WholeProductPage() {
           </Card>
         </div>
       </div>
-      <div className="flex items-end border border-gray-400 rounded-lg w-full min-w-1/2 h-[90vh]">
-        <div className="flex flex-row gap-2 m-2 w-full">
-          <Dialog>
-            <DialogTrigger className="border border-gray-300 p-2 rounded-lg">
-              <SiMicrosoftexcel />
-            </DialogTrigger>
-            <DialogContent>
-              <DialogHeader>
-                <DialogTitle>Upload your excel file here</DialogTitle>
-                <DialogDescription>
-                  Browse your excel file to analyse using promptu
-                </DialogDescription>
-              </DialogHeader>
-              <Input
-                onChange={(e) => {
-                  file = e.target.files;
-                }}
-                type="file"
-                accept=".xlsx,.xlsm,.xlsb,.xml,.csv,.xls,"
-              ></Input>
-              <DialogClose>
-                <Button
-                  onClick={() => {
-                    console.log(file[0]);
-                    fileHandler();
+      <div className="flex flex-col justify-between place-items-start border border-gray-400 rounded-lg w-full min-w-1/2 h-[90vh]">
+        <div className="h-full w-full">
+          <div className="w-fit h-fit m-2 border border-gray-400 rounded-lg">
+            {Res}
+          </div>
+        </div>
+        <div className="w-full">
+          <div className="flex flex-row gap-2 m-2">
+            <Dialog>
+              <DialogTrigger className="border border-gray-300 p-2 rounded-lg">
+                <SiMicrosoftexcel />
+              </DialogTrigger>
+              <DialogContent>
+                <DialogHeader>
+                  <DialogTitle>Upload your excel file here</DialogTitle>
+                  <DialogDescription>
+                    Browse your excel file to analyse using promptu
+                  </DialogDescription>
+                </DialogHeader>
+                <Input
+                  onChange={(e) => {
+                    file = e.target.files;
                   }}
-                >
-                  Submit
-                </Button>
-              </DialogClose>
-            </DialogContent>
-          </Dialog>
-          <Input placeholder="ex.Age beetween 20-30 and living in india" />
+                  type="file"
+                  accept=".xlsx,.xlsm,.xlsb,.xml,.csv,.xls,"
+                ></Input>
+                <DialogClose>
+                  <Button
+                    onClick={() => {
+                      fileHandler();
+                    }}
+                  >
+                    Submit
+                  </Button>
+                </DialogClose>
+              </DialogContent>
+            </Dialog>
+            <Input
+              onChange={(e) => setPrompt(e.target.value)}
+              placeholder="ex.Age beetween 20-30 and living in india"
+            />
 
-          <Button>Generate</Button>
+            <Button
+              onClick={() => {
+                callModel();
+              }}
+            >
+              Generate
+            </Button>
+          </div>
         </div>
       </div>
     </div>

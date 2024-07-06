@@ -7,4 +7,7 @@ export default function ProductPage() {
     if(session) {
         return <WholeProductPage></WholeProductPage>
     }
+    else{
+      return <h1>Login first</h1>
+    }
 }
